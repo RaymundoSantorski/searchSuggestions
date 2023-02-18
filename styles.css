@@ -13,7 +13,7 @@
 }
 
 .searchBar{
-    width: 240px;
+    width: 300px;
     height: 40px;
     background-color: rgba(230, 250, 230, 0.8);
     margin-top: 30px;
@@ -25,7 +25,7 @@
 
 .suggestions{
     position: fixed;
-    width: 250px;
+    width: 320px;
     overflow: scroll;
     display: flex;
     flex-direction: column;
@@ -35,7 +35,7 @@
 }
 
 .suggestions li{
-    width: 200px;
+    width: 260px;
     list-style: none;
     border-bottom: 1px solid rgb(200, 200, 200);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -53,4 +53,12 @@
 .suggestions li:nth-child(odd){
     transform: perspective(100px) rotateX(-3deg) translateY(3px);
     background: linear-gradient(to top, #ffffff 0%, #EFEFEF 100%);
+}
+
+.population{
+    font-size: 15px;
+}
+
+.hl{
+    background: rgba(200, 100, 150, 0.6);
 }
