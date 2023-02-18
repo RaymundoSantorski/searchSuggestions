@@ -7,11 +7,22 @@ fetch(endpoint)
     .then(blob => blob.json())
     .then(resp => cities.push(...resp));
 
+const formatNumber = (x) => {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ', ');
+}
+
 function handleInputChange(){
     const regex = new RegExp(this.value, 'gi');
-    const filteredCities = cities.filter(city => regex.test(city.city) || regex.test(city.state));
-    const html = filteredCities.map(city => {
-        return `<li>${city.city}, ${city.state}</li>`;
+    const filteredCities = cities.filter(place => regex.test(place.city) || regex.test(place.state));
+    const html = filteredCities.map(place => {
+        const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`)
+        const stateName = place.state.replace(regex, `<span class="hl">${this.value}</span>`)
+        return `
+            <li>
+                <span>${cityName}, ${stateName}</span>
+                <span class="population">${formatNumber(place.population)}</span>
+            </li>
+        `;
     }).join('');
     suggestions.innerHTML = html;
 }
